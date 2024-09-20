@@ -218,7 +218,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   }
 
   template <size_t N>
-  constexpr span(const std::array<std::remove_cv_t<T>, N>& array) noexcept
+  constexpr span(const std::array<std::remove_cv<T>, N>& array) noexcept
       : span(array.data(), N) {
     static_assert(Extent == dynamic_extent || Extent == N);
   }
