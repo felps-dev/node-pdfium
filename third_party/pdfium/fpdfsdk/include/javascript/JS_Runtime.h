@@ -44,7 +44,7 @@ public:
 	v8::Isolate*								GetIsolate(){return m_isolate;};
 	void									SetIsolate(v8::Isolate* isolate){m_isolate = isolate;}
 
-	v8::Handle<v8::Context>							NewJSContext();
+	v8::Local<v8::Context>							NewJSContext();
 protected:
 	CFX_ArrayTemplate<CJS_Context *>		m_ContextArray;
 	CPDFDoc_Environment *							m_pApp;

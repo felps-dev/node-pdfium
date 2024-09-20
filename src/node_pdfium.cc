@@ -500,7 +500,7 @@ void RenderAsync(uv_work_t *r) {
   //req->error = "Not implemented yet";
 }
 
-void EncodePagesResult(const std::vector<std::string>& iResult, v8::Handle<v8::Array> oResult) {
+void EncodePagesResult(const std::vector<std::string>& iResult, v8::Local<v8::Array> oResult) {
   MY_NODE_MODULE_ISOLATE_DECL;
   int i = 0;
   for(std::vector<std::string>::const_iterator it = iResult.begin(); it != iResult.end(); ++it) {
@@ -519,14 +519,14 @@ void RenderAsyncAfter(uv_work_t *r) {
 
   v8::Local<v8::Function> callback = v8::Local<v8::Function>::New(MY_NODE_MODULE_ISOLATE_PRE req->callback);
   if(!req->error.empty()) {
-    v8::Handle<v8::Value> argv[1] = {v8::Exception::TypeError(V8_STRING_NEW_UTF8(req->error.c_str()))};
+    v8::Local<v8::Value> argv[1] = {v8::Exception::TypeError(V8_STRING_NEW_UTF8(req->error.c_str()))};
 
     callback->Call(MY_NODE_MODULE_CONTEXT, 1, argv);
   } else {
     v8::Local<v8::Array> result = V8_VALUE_NEW_DEFAULT_V_0_11_10(Array);
     EncodePagesResult(req->result, result);
 
-    v8::Handle<v8::Value> argv[2] = {
+    v8::Local<v8::Value> argv[2] = {
       v8::Null(MY_NODE_MODULE_ISOLATE),
       result
     };
@@ -616,7 +616,7 @@ MY_NODE_MODULE_CALLBACK(render)
   }
 }
 
-void initNode(v8::Handle<v8::Object> exports) {
+void initNode(v8::Local<v8::Object> exports) {
   // Init library
   PdfModule::GetModule();
 

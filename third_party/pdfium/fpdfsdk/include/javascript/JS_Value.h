@@ -16,7 +16,7 @@ class CJS_Value
 {
 public:
 	CJS_Value(v8::Isolate* isolate);
-	CJS_Value(v8::Isolate* isolate, v8::Handle<v8::Value> pValue,FXJSVALUETYPE t);
+	CJS_Value(v8::Isolate* isolate, v8::Local<v8::Value> pValue,FXJSVALUETYPE t);
 	CJS_Value(v8::Isolate* isolate, const int &iValue);
 	CJS_Value(v8::Isolate* isolate, const double &dValue);
 	CJS_Value(v8::Isolate* isolate, const float &fValue);
@@ -31,7 +31,7 @@ public:
 	~CJS_Value();
 
 	void SetNull();
-    void Attach(v8::Handle<v8::Value> pValue,FXJSVALUETYPE t);
+    void Attach(v8::Local<v8::Value> pValue,FXJSVALUETYPE t);
 	void Attach(CJS_Value *pValue);
 	void Detach();
 
@@ -41,18 +41,18 @@ public:
 	operator double() const;
 	operator float() const;
 	operator CJS_Object*() const;
-	operator v8::Handle<v8::Object>() const;
-	operator v8::Handle<v8::Array>() const;
+	operator v8::Local<v8::Object>() const;
+	operator v8::Local<v8::Array>() const;
 	operator CFX_WideString() const;
 	operator CFX_ByteString() const;
-	v8::Handle<v8::Value> ToJSValue();
+	v8::Local<v8::Value> ToJSValue();
 
 	void operator = (int iValue);
 	void operator = (bool bValue);
 	void operator = (double);
 	void operator = (float);
 	void operator = (CJS_Object*);
-	void operator = (v8::Handle<v8::Object>);
+	void operator = (v8::Local<v8::Object>);
 	void operator = (CJS_Array &);
 	void operator = (CJS_Date &);
 	void operator = (FX_LPCWSTR pWstr);
@@ -68,7 +68,7 @@ public:
 
 	v8::Isolate* GetIsolate() {return m_isolate;}
 protected:
-	v8::Handle<v8::Value> m_pValue;
+	v8::Local<v8::Value> m_pValue;
 	FXJSVALUETYPE m_eType;
 	v8::Isolate* m_isolate;
 };
@@ -116,7 +116,7 @@ public:
 	void operator<<(CJS_Date &date);
 	void operator>>(CJS_Date &date) const;
 
-	operator v8::Handle<v8::Value>() const;
+	operator v8::Local<v8::Value>() const;
 
 	void StartSetting();
 	void StartGetting();
@@ -130,16 +130,16 @@ public:
 	CJS_Array(v8::Isolate* isolate);
 	virtual ~CJS_Array();
 
-	void Attach(v8::Handle<v8::Array> pArray);
+	void Attach(v8::Local<v8::Array> pArray);
 	void GetElement(unsigned index,CJS_Value &value);
 	void SetElement(unsigned index,CJS_Value value);
     int GetLength();
 	FX_BOOL IsAttached();
-	operator v8::Handle<v8::Array>();
+	operator v8::Local<v8::Array>();
 
 	v8::Isolate* GetIsolate() {return m_isolate;}
 private:
-	v8::Handle<v8::Array> m_pArray;
+	v8::Local<v8::Array> m_pArray;
 	v8::Isolate* m_isolate;
 };
 
@@ -151,7 +151,7 @@ public:
 	CJS_Date(v8::Isolate* isolate,double dMsec_time);
 	CJS_Date(v8::Isolate* isolate,int year, int mon, int day,int hour, int min, int sec);
 	virtual ~CJS_Date();
-	void Attach(v8::Handle<v8::Value> pDate);
+	void Attach(v8::Local<v8::Value> pDate);
 
 	int     GetYear();
 	void    SetYear(int iYear);
@@ -171,7 +171,7 @@ public:
 	int     GetSeconds();
 	void    SetSeconds(int seconds);
 
-	operator v8::Handle<v8::Value>();
+	operator v8::Local<v8::Value>();
 	operator double() const;
 
 	CFX_WideString	ToString() const;
@@ -181,7 +181,7 @@ public:
 	FX_BOOL	IsValidDate();
 
 protected:
-	v8::Handle<v8::Value> m_pDate;
+	v8::Local<v8::Value> m_pDate;
 	v8::Isolate* m_isolate;
 };
 

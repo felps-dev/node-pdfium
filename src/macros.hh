@@ -32,7 +32,7 @@
 #  define MY_NODE_MODULE_ISOLATE_POST
 #  define MY_NODE_MODULE_CONTEXT      Context::GetCurrent()->Global()
 #  define MY_NODE_MODULE_HANDLESCOPE v8::HandleScope scope;
-#  define MY_NODE_MODULE_CALLBACK(name) v8::Handle<v8::Value> name(const v8::Arguments& iArgs)
+#  define MY_NODE_MODULE_CALLBACK(name) v8::Local<v8::Value> name(const v8::Arguments& iArgs)
 #  define V8_VALUE_NEW(type, value)   v8::type::New(value)
 #  define V8_VALUE_NEW_DEFAULT(type)   v8::type::New()
 #  define V8_STRING_NEW_UTF8(value)   v8::String::New(MY_NODE_MODULE_ISOLATE_PRE value)
@@ -56,7 +56,7 @@
 #  define RETURN_EXCEPTION_STR_CB(msg, cb) if(cb.IsEmpty()) {                                 \
         RETURN_EXCEPTION_STR(msg);                                                            \
     } else {                                                                                  \
-        v8::Handle<v8::Value> argv[1] = {v8::Exception::TypeError(V8_STRING_NEW_UTF8(msg))};  \
+        v8::Local<v8::Value> argv[1] = {v8::Exception::TypeError(V8_STRING_NEW_UTF8(msg))};  \
         cb->Call(MY_NODE_MODULE_CONTEXT, 1, argv);                                            \
         MY_NODE_MODULE_RETURN_VALUE(v8::Undefined(MY_NODE_MODULE_ISOLATE));                   \
     }

@@ -327,7 +327,7 @@ FX_BOOL app::alert(IFXJS_Context* cc, const CJS_Parameters& params, CJS_Value& v
 		{
 			JSObject pObj = params[0];
 			{
-				v8::Handle<v8::Value> pValue = JS_GetObjectElement(isolate, pObj, L"cMsg");
+				v8::Local<v8::Value> pValue = JS_GetObjectElement(isolate, pObj, L"cMsg");
 				swMsg = CJS_Value(isolate,pValue,VT_unknown).operator CFX_WideString();
 
 				pValue = JS_GetObjectElement(isolate,pObj,L"cTitle");
@@ -742,7 +742,7 @@ FX_BOOL app::mailMsg(IFXJS_Context* cc, const CJS_Parameters& params, CJS_Value&
 	{
 		JSObject pObj = (JSObject)params[0];
 
-		v8::Handle<v8::Value> pValue = JS_GetObjectElement(isolate,pObj, L"bUI");
+		v8::Local<v8::Value> pValue = JS_GetObjectElement(isolate,pObj, L"bUI");
 			bUI = (int)CJS_Value(isolate,pValue,GET_VALUE_TYPE(pValue));
 
 		pValue = JS_GetObjectElement(isolate, pObj, L"cTo");
@@ -865,7 +865,7 @@ FX_BOOL app::response(IFXJS_Context* cc, const CJS_Parameters& params, CJS_Value
 	if (iLength > 0 && params[0].GetType() == VT_object)
 	{
 		JSObject pObj = (JSObject )params[0];
-		v8::Handle<v8::Value> pValue = JS_GetObjectElement(isolate,pObj,L"cQuestion");
+		v8::Local<v8::Value> pValue = JS_GetObjectElement(isolate,pObj,L"cQuestion");
 		swQuestion = CJS_Value(isolate,pValue,GET_VALUE_TYPE(pValue)).operator CFX_WideString();
 
 		pValue = JS_GetObjectElement(isolate,pObj,L"cTitle");
