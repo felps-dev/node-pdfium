@@ -304,8 +304,8 @@ void PrecalculatedXFORM(_cmsTRANSFORM* p,
                         const void* in,
                         void* out, cmsUInt32Number Size, cmsUInt32Number Stride)
 {
-    register cmsUInt8Number* accum;
-    register cmsUInt8Number* output;
+    cmsUInt8Number* accum;
+    cmsUInt8Number* output;
     cmsUInt16Number wIn[cmsMAXCHANNELS], wOut[cmsMAXCHANNELS];
     cmsUInt32Number i, n;
 

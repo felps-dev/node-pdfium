@@ -195,9 +195,9 @@ forward_DCT (j_compress_ptr cinfo, jpeg_component_info * compptr,
 
   for (bi = 0; bi < num_blocks; bi++, start_col += DCTSIZE) {
     /* Load data into workspace, applying unsigned->signed conversion */
-    { register DCTELEM *workspaceptr;
-      register JSAMPROW elemptr;
-      register int elemr;
+    { DCTELEM *workspaceptr;
+      JSAMPROW elemptr;
+      int elemr;
 
       workspaceptr = workspace;
       for (elemr = 0; elemr < DCTSIZE; elemr++) {
@@ -212,7 +212,7 @@ forward_DCT (j_compress_ptr cinfo, jpeg_component_info * compptr,
 	*workspaceptr++ = GETJSAMPLE(*elemptr++) - CENTERJSAMPLE;
 	*workspaceptr++ = GETJSAMPLE(*elemptr++) - CENTERJSAMPLE;
 #else
-	{ register int elemc;
+	{ int elemc;
 	  for (elemc = DCTSIZE; elemc > 0; elemc--) {
 	    *workspaceptr++ = GETJSAMPLE(*elemptr++) - CENTERJSAMPLE;
 	  }
@@ -225,9 +225,9 @@ forward_DCT (j_compress_ptr cinfo, jpeg_component_info * compptr,
     (*do_dct) (workspace);
 
     /* Quantize/descale the coefficients, and store into coef_blocks[] */
-    { register DCTELEM temp, qval;
-      register int i;
-      register JCOEFPTR output_ptr = coef_blocks[bi];
+    { DCTELEM temp, qval;
+      int i;
+      JCOEFPTR output_ptr = coef_blocks[bi];
 
       for (i = 0; i < DCTSIZE2; i++) {
 	qval = divisors[i];
@@ -285,9 +285,9 @@ forward_DCT_float (j_compress_ptr cinfo, jpeg_component_info * compptr,
 
   for (bi = 0; bi < num_blocks; bi++, start_col += DCTSIZE) {
     /* Load data into workspace, applying unsigned->signed conversion */
-    { register FAST_FLOAT *workspaceptr;
-      register JSAMPROW elemptr;
-      register int elemr;
+    { FAST_FLOAT *workspaceptr;
+      JSAMPROW elemptr;
+      int elemr;
 
       workspaceptr = workspace;
       for (elemr = 0; elemr < DCTSIZE; elemr++) {
@@ -302,7 +302,7 @@ forward_DCT_float (j_compress_ptr cinfo, jpeg_component_info * compptr,
 	*workspaceptr++ = (FAST_FLOAT)(GETJSAMPLE(*elemptr++) - CENTERJSAMPLE);
 	*workspaceptr++ = (FAST_FLOAT)(GETJSAMPLE(*elemptr++) - CENTERJSAMPLE);
 #else
-	{ register int elemc;
+	{ int elemc;
 	  for (elemc = DCTSIZE; elemc > 0; elemc--) {
 	    *workspaceptr++ = (FAST_FLOAT)
 	      (GETJSAMPLE(*elemptr++) - CENTERJSAMPLE);
@@ -316,9 +316,9 @@ forward_DCT_float (j_compress_ptr cinfo, jpeg_component_info * compptr,
     (*do_dct) (workspace);
 
     /* Quantize/descale the coefficients, and store into coef_blocks[] */
-    { register FAST_FLOAT temp;
-      register int i;
-      register JCOEFPTR output_ptr = coef_blocks[bi];
+    { FAST_FLOAT temp;
+      int i;
+      JCOEFPTR output_ptr = coef_blocks[bi];
 
       for (i = 0; i < DCTSIZE2; i++) {
 	/* Apply the quantization and scaling factor */

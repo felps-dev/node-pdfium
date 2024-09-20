@@ -36,7 +36,7 @@ v8::LocalVector<v8::Value> ExpandKeywordParams(
 bool IsExpandedParamKnown(v8::Local<v8::Value> value);
 
 // All JS classes have a name, an object defintion ID, and the ability to
-// register themselves with FXJS_V8. We never make a BASE class on its own
+// themselves with FXJS_V8. We never make a BASE class on its own
 // because it can't really do anything.
 
 // Rich JS classes provide constants, methods, properties, and the ability

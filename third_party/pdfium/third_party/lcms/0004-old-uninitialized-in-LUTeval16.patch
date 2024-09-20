@@ -2,7 +2,7 @@ diff --git a/third_party/lcms/src/cmslut.c b/third_party/lcms/src/cmslut.c
 index 45f05c61d..18b88a545 100644
 --- a/third_party/lcms/src/cmslut.c
 +++ b/third_party/lcms/src/cmslut.c
-@@ -1295,7 +1295,7 @@ void _LUTeval16(register const cmsUInt16Number In[], register cmsUInt16Number Ou
+@@ -1295,7 +1295,7 @@ void _LUTeval16(const cmsUInt16Number In[], cmsUInt16Number Ou
  {
      cmsPipeline* lut = (cmsPipeline*) D;
      cmsStage *mpe;

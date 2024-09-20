@@ -64,10 +64,10 @@
 /*@{*/
 
 #ifdef __AVX2__
-/** Number of int32 values in a AVX2 register */
+/** Number of int32 values in a AVX2 */
 #define VREG_INT_COUNT       8
 #else
-/** Number of int32 values in a SSE2 register */
+/** Number of int32 values in a SSE2 */
 #define VREG_INT_COUNT       4
 #endif
 

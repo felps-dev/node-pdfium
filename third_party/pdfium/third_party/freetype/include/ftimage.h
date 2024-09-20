@@ -687,7 +687,7 @@ FT_BEGIN_HEADER
   /* <Description>                                                         */
   /*    An enumeration type used to describe the format of a given glyph   */
   /*    image.  Note that this version of FreeType only supports two image */
-  /*    formats, even though future font drivers will be able to register  */
+  /*    formats, even though future font drivers will be able to  */
   /*    their own format.                                                  */
   /*                                                                       */
   /* <Values>                                                              */

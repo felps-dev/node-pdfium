@@ -47,7 +47,7 @@ FT_BEGIN_HEADER
   FT_MulFix_arm( FT_Int32  a,
                  FT_Int32  b )
   {
-    register FT_Int32  t, t2;
+    FT_Int32  t, t2;
 
 
     __asm
@@ -80,7 +80,7 @@ FT_BEGIN_HEADER
   FT_MulFix_arm( FT_Int32  a,
                  FT_Int32  b )
   {
-    register FT_Int32  t, t2;
+    FT_Int32  t, t2;
 
 
     __asm__ __volatile__ (
@@ -116,7 +116,7 @@ FT_BEGIN_HEADER
   FT_MulFix_i386( FT_Int32  a,
                   FT_Int32  b )
   {
-    register FT_Int32  result;
+    FT_Int32  result;
 
 
     __asm__ __volatile__ (
@@ -152,7 +152,7 @@ FT_BEGIN_HEADER
   FT_MulFix_i386( FT_Int32  a,
                   FT_Int32  b )
   {
-    register FT_Int32  result;
+    FT_Int32  result;
 
     __asm
     {
@@ -208,7 +208,7 @@ FT_BEGIN_HEADER
     /* For some reason, GCC 4.6 on Ubuntu 12.04 generates invalid machine  */
     /* code from the lines below.  The main issue is that `wide_a' is not  */
     /* properly initialized by sign-extending `a'.  Instead, the generated */
-    /* machine code assumes that the register that contains `a' on input   */
+    /* machine code assumes that the that contains `a' on input   */
     /* can be used directly as a 64-bit value, which is wrong most of the  */
     /* time.                                                               */
     long long  wide_a = (long long)a;

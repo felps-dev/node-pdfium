@@ -2,7 +2,7 @@ diff --git a/third_party/lcms/src/cmslut.c b/third_party/lcms/src/cmslut.c
 index df3dfc1ad..45f05c61d 100644
 --- a/third_party/lcms/src/cmslut.c
 +++ b/third_party/lcms/src/cmslut.c
-@@ -1321,7 +1321,7 @@ void _LUTevalFloat(register const cmsFloat32Number In[], register cmsFloat32Numb
+@@ -1321,7 +1321,7 @@ void _LUTevalFloat(const cmsFloat32Number In[], cmsFloat32Numb
  {
      cmsPipeline* lut = (cmsPipeline*) D;
      cmsStage *mpe;

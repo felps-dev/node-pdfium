@@ -10,7 +10,7 @@ index 4164ba090..a36b7ed10 100644
 -#define OPJ_WD(i) v->mem[(1+(i)*2)]
 -
  #ifdef __AVX2__
- /** Number of int32 values in a AVX2 register */
+ /** Number of int32 values in a AVX2 */
  #define VREG_INT_COUNT       8
 @@ -82,6 +79,7 @@
  

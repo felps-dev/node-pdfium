@@ -475,7 +475,7 @@ skia_source_set("skia_opts") {
   if (current_cpu == "x86" || current_cpu == "x64") {
     deps = [ ":skia_opts_hsw" ]
   } else if (current_cpu == "arm") {
-    # The assembly uses the frame pointer register (r7 in Thumb/r11 in
+    # The assembly uses the frame pointer (r7 in Thumb/r11 in
     # ARM), the compiler doesn't like that.
     cflags += [ "-fomit-frame-pointer" ]
 

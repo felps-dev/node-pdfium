@@ -707,8 +707,8 @@ void* _cmsContextGetClientChunk(cmsContext ContextID, _cmsMemoryClient mc)
 
 
 // This function returns the given context its default pristine state,
-// as no plug-ins were declared. There is no way to unregister a single 
-// plug-in, as a single call to cmsPluginTHR() function may register 
+// as no plug-ins were declared. There is no way to una single 
+// plug-in, as a single call to cmsPluginTHR() function may 
 // many different plug-ins simultaneously, then there is no way to 
 // identify which plug-in to unregister.
 void CMSEXPORT cmsUnregisterPluginsTHR(cmsContext ContextID)

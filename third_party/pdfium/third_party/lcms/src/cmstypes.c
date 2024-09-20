@@ -73,7 +73,7 @@ cmsBool RegisterTypesPlugin(cmsContext id, cmsPluginBase* Data, _cmsMemoryClient
     _cmsTagTypePluginChunkType* ctx = ( _cmsTagTypePluginChunkType*) _cmsContextGetClientChunk(id, pos);
     _cmsTagTypeLinkedList *pt;
 
-    // Calling the function with NULL as plug-in would unregister the plug in.
+    // Calling the function with NULL as plug-in would unthe plug in.
     if (Data == NULL) {
 
         // There is no need to set free the memory, as pool is destroyed as a whole.

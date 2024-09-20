@@ -361,7 +361,7 @@ cmsHPROFILE CMSEXPORT cmsCreateLinearizationDeviceLink(cmsColorSpaceSignature Co
 //     K: Does not change
 
 static
-int InkLimitingSampler(register const cmsUInt16Number In[], register cmsUInt16Number Out[], register void* Cargo)
+int InkLimitingSampler(const cmsUInt16Number In[], cmsUInt16Number Out[], void* Cargo)
 {
     cmsFloat64Number InkLimit = *(cmsFloat64Number *) Cargo;
     cmsFloat64Number SumCMY, SumCMYK, Ratio;
@@ -612,18 +612,18 @@ cmsHPROFILE CMSEXPORT cmsCreateXYZProfile(void)
 
 //sRGB Curves are defined by:
 //
-//If  R’sRGB,G’sRGB, B’sRGB < 0.04045
+//If  Rï¿½sRGB,Gï¿½sRGB, Bï¿½sRGB < 0.04045
 //
-//    R =  R’sRGB / 12.92
-//    G =  G’sRGB / 12.92
-//    B =  B’sRGB / 12.92
+//    R =  Rï¿½sRGB / 12.92
+//    G =  Gï¿½sRGB / 12.92
+//    B =  Bï¿½sRGB / 12.92
 //
 //
-//else if  R’sRGB,G’sRGB, B’sRGB >= 0.04045
+//else if  Rï¿½sRGB,Gï¿½sRGB, Bï¿½sRGB >= 0.04045
 //
-//    R = ((R’sRGB + 0.055) / 1.055)^2.4
-//    G = ((G’sRGB + 0.055) / 1.055)^2.4
-//    B = ((B’sRGB + 0.055) / 1.055)^2.4
+//    R = ((Rï¿½sRGB + 0.055) / 1.055)^2.4
+//    G = ((Gï¿½sRGB + 0.055) / 1.055)^2.4
+//    B = ((Bï¿½sRGB + 0.055) / 1.055)^2.4
 
 static
 cmsToneCurve* Build_sRGBGamma(cmsContext ContextID)
@@ -685,7 +685,7 @@ typedef struct {
 
 
 static
-int bchswSampler(register const cmsUInt16Number In[], register cmsUInt16Number Out[], register void* Cargo)
+int bchswSampler(const cmsUInt16Number In[], cmsUInt16Number Out[], void* Cargo)
 {
     cmsCIELab LabIn, LabOut;
     cmsCIELCh LChIn, LChOut;

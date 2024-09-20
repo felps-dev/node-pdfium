@@ -951,7 +951,7 @@ FT_BEGIN_HEADER
   /* Define default raster's interface.  The default raster is located in  */
   /* `src/base/ftraster.c'.                                                */
   /*                                                                       */
-  /* Client applications can register new rasters through the              */
+  /* Client applications can new rasters through the              */
   /* FT_Set_Raster() API.                                                  */
 
 #ifndef FT_NO_DEFAULT_RASTER
