@@ -57,7 +57,7 @@
     'conditions' : [
       ['OS=="mac"', {
         'xcode_settings': {
-          'OTHER_CPLUSPLUSFLAGS' : ['-std=c++11'],
+          'OTHER_CPLUSPLUSFLAGS' : ['-std=c++17'],
           #'MACOSX_DEPLOYMENT_TARGET': '10.7',
           #'ARCHS': '$(ARCHS_STANDARD_64_BIT)'
         },
